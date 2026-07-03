@@ -1,0 +1,52 @@
+﻿Test 
+
+Spire.Doc
+
+0.需求
+html to docx for SAR Plots.
+
+1.引用 DLL
+把 Spire.Doc.dll添加到项目引用。
+using Spire.Doc;
+using Spire.Doc.Documents;
+2.写程序
+2.1.创建并写入 Word 文档
+using Spire.Doc;
+using Spire.Doc.Documents;
+
+Document doc = new Document();
+Section section = doc.AddSection();
+
+// 添加标题
+Paragraph p1 = section.AddParagraph();
+p1.ApplyStyle(BuiltinStyle.Title);
+p1.AppendText("销售报告");
+
+// 添加正文
+Paragraph p2 = section.AddParagraph();
+p2.AppendText("这是使用 Spire.Doc 自动生成的 Word 文档。");
+
+doc.SaveToFile("Demo.docx", FileFormat.Docx2016);
+doc.Close();
+
+2.2.读取 Word 文档内容
+Document doc = new Document();
+doc.LoadFromFile("Demo.docx");
+
+// 提取全部文本
+string text = doc.GetText();
+Console.WriteLine(text);
+
+doc.Close();
+2.3.Word 转 PDF
+
+3.html to docx
+using Spire.Doc;
+
+Document doc = new Document();
+// XHTMLValidationType.None 可容忍普通 HTML 的小瑕疵
+doc.LoadFromFile(@"C:\Reports\sample.html",
+                 FileFormat.Html,
+                 XHTMLValidationType.None);
+doc.SaveToFile(@"C:\Reports\SAR_Report.docx", FileFormat.Docx2016);
+doc.Close();
