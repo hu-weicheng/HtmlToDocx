@@ -1,5 +1,4 @@
 <Solution>
   <Project Path="HtmlToDocx for SAR Plots/HtmlToDocx for SAR Plots.csproj" />
-  <Project Path="HtmlToDocx/HtmlToDocx.csproj" />
   <Project Path="TestSpireDoc/TestSpireDoc.csproj" />
 </Solution>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TestSpireDoc
@@ -31,7 +32,14 @@ namespace TestSpireDoc
                 doc.Close();
             }
         }
-        public bool Check(string inputHtmlPath, string outputHtmlPath)
+
+
+    public static string RemoveTrailingDashNumber(string fileName)
+    {
+        // 匹配 "-1" "-2" ... "-999" 等，仅在末尾
+        return Regex.Replace(fileName, @"-\d+$", "");
+    }
+    public bool Check(string inputHtmlPath, string outputHtmlPath)
         {
             bool exist = System.IO.File.Exists(this.inputHtmlPath);
 
