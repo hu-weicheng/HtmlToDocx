@@ -19,6 +19,11 @@ namespace HtmlToDocx_for_SAR_Plots
         public HtmlToDocx()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            //this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void HtmlToDocx_Load(object sender, EventArgs e)
@@ -40,7 +45,7 @@ namespace HtmlToDocx_for_SAR_Plots
             //如果都没问题就转换
             if(tr.Check(tr.inputHtmlPath,tr.outputPath)==true)
             {
-                tr.fileName = Path.GetFileNameWithoutExtension(tr.inputHtmlPath);
+                tr.fileName = Transform.RemoveTrailingDashNumber(tr.inputHtmlPath);
                 tr.outputDocxPath = Path.Combine(tr.outputPath, tr.fileName + ".docx");
                 tr.Translate();
             }
