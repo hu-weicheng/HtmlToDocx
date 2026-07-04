@@ -40,14 +40,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -86,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 286);
+            this.button1.Location = new System.Drawing.Point(446, 321);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -143,7 +135,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(241, 315);
+            this.progressBar1.Location = new System.Drawing.Point(241, 350);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(470, 23);
             this.progressBar1.TabIndex = 10;
@@ -156,81 +148,11 @@
             this.textBox4.Size = new System.Drawing.Size(207, 150);
             this.textBox4.TabIndex = 11;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(648, 12);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(63, 45);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "输入多个案件根目录";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 12);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "多个案件html文件路径：";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(241, 12);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(401, 45);
-            this.textBox5.TabIndex = 12;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(379, 30);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "合并";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Location = new System.Drawing.Point(241, 359);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(470, 79);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "合并成 SAR Plots.docx";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(221, 12);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "请先将docx案件文件编上顺序，再转换。";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(9, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(267, 34);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "docx文件命名“1# ” “2# ” “3# ”等，比如“1# GSM 900 Head Left Cheek Mid.docx\"";
-            // 
             // HtmlToDocx
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button4);
@@ -246,8 +168,6 @@
             this.Name = "HtmlToDocx";
             this.Text = "HtmlToDocx for SAR Plots V2.2";
             this.Load += new System.EventHandler(this.HtmlToDocx_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,13 +187,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
     }
 }
 

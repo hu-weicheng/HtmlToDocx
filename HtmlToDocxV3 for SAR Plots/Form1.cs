@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Ookii.Dialogs.WinForms;
-
 using TestSpireDoc;//自定义命名空间
 
 namespace HtmlToDocx_for_SAR_Plots
@@ -84,7 +82,7 @@ namespace HtmlToDocx_for_SAR_Plots
                     progressBar1.Value = 0;
                     progressBar1.Minimum = 0;
                     progressBar1.Maximum = htmls.htmPaths.Count;
-                    progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+                    progressBar1.Style = ProgressBarStyle.Continuous;
                     // ✅ 成功后变绿
                     button1.BackColor = Color.LightBlue;
                     for (int i=0;i<htmls.htmPaths.Count;i++)
@@ -173,7 +171,7 @@ namespace HtmlToDocx_for_SAR_Plots
                     progressBar1.Value = 0;
                     progressBar1.Minimum = 0;
                     progressBar1.Maximum = 100;
-                    progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+                    progressBar1.Style = ProgressBarStyle.Continuous;
 
                     // 扫描
                     htmls.htmPaths.Clear();
@@ -187,17 +185,6 @@ namespace HtmlToDocx_for_SAR_Plots
                         $" 扫描完成，共发现 {htmls.Count} 个 htm文件.\r\n");
                 }
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //输入多个案件目录
-        private void button5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

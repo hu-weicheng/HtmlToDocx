@@ -1,5 +1,6 @@
 ﻿using Spire;
 using Spire.Doc;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 using TestSpireDoc;
 //using Spire.License;
 //using Spire.Doc.Documents;
@@ -39,12 +41,33 @@ namespace TestSpireDoc
             //Console.WriteLine(RemoveTrailingDashNumber(o));
             //Console.WriteLine(RemoveTrailingDashNumber(input
 
-            string root = @"C:\Users\Raise\Downloads\6\2601U39467E-SA(OD1806)India";
-            var htmDirs = GetAllHtmFiles(root);
-            foreach (var Dir in htmDirs)
+            //string root = @"C:\Users\Raise\Downloads\6\2601U39467E-SA(OD1806)India";
+            //var htmDirs = GetAllHtmFiles(root);
+            //foreach (var Dir in htmDirs)
+            //{
+            //    Console.WriteLine(Dir);
+            //}    
+
+            string docroot = @"C:\Users\Raise\Desktop\TestSpire\2601U29087E-SA(LF1013)India";
+            //搜集docx文件
+            List<string> doclist= new List<string>();
+            foreach (var file in Directory.EnumerateFiles(
+                docroot, "*.*", SearchOption.AllDirectories))
             {
-                Console.WriteLine(Dir);
-            }    
+                string ext = Path.GetExtension(file).ToLower();
+                if (ext == ".doc" || ext == ".docx")
+                {
+                    doclist.Add(file);
+                }
+            }
+            foreach (var file in doclist)
+            {
+                Console.WriteLine(file);
+            }
+
+            string outputPath = docroot+ @"2601U29087E-SA(LF1013)India SAR Plots.docx";
+            //MergeDocx.MergeDocsByAltChunk(doclist.ToArray(), outputPath);   //报错文件已损坏，只有第一个Docx
+            MergeDocx.MergeDocsEmbedded(doclist.ToArray(), outputPath);
         }
 
         public static List<string> GetAllHtmFiles(string rootDir)
@@ -57,7 +80,7 @@ namespace TestSpireDoc
             // SearchOption.AllDirectories = 包含所有子文件夹
             foreach (string file in Directory.GetFiles(
                 rootDir,
-                "*.*",
+                " *.*",
                 SearchOption.AllDirectories))
             {
                 string ext = Path.GetExtension(file).ToLower();

@@ -1,6 +1,5 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;    //AltChunk
-using Spire.Doc;
+﻿using Spire.Doc;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace TestSpireDoc
 {
     internal class Transform
     {
-        Spire.Doc.Document doc = new Spire.Doc.Document();
+        Document doc = new Document();
         public string inputCaseDir=string.Empty;
         public string inputHtmlPath = string.Empty;
         public string fileName = string.Empty;
@@ -112,7 +109,7 @@ namespace TestSpireDoc
         }
         public static void TestTranslate(string inputHtmlFilePath,string outputDocxFilePath)
         {
-            Spire.Doc.Document doc = new Spire.Doc.Document();
+            Document doc = new Document();
             bool exists = System.IO.File.Exists(inputHtmlFilePath);
             //Console.WriteLine(exists);
             // XHTMLValidationType.None 可容忍普通 HTML 的小瑕疵
@@ -193,74 +190,5 @@ namespace TestSpireDoc
 
             return htmPaths;
         }
-    }
-
-    internal class MergeDocx
-    {
-        public static void MergeDocsByAltChunk(string[] docxFiles, string outputPath)
-        {
-            //以第一个文件为基础
-            File.Copy(docxFiles[0], outputPath, true);
-
-            using (WordprocessingDocument mainDoc =
-                WordprocessingDocument.Open(outputPath, true))
-            {
-                MainDocumentPart mainPart = mainDoc.MainDocumentPart;
-                System.Windows.Forms.VisualStyles.VisualStyleElement.Tab.Body body = mainPart.Document.Body;
-
-                foreach (var file in docxFiles.Skip(1))
-                {
-                    var rel = mainPart.AddExternalRelationship(
-                        AlternativeFormatImportPart.RelationshipType,
-                        new Uri(file, UriKind.Absolute)
-                    );
-
-                    mainPart.AddAlternativeFormatImportPart(
-                        AlternativeFormatImportPartType.WordprocessingML,
-                        rel.Id
-                    );
-
-                    body.Append(new AltChunk { Id = rel.Id });
-                }
-
-                mainPart.Document.Save();
-            }
-        }
-
-        public static void MergeDocsEmbedded(string[] docxFiles, string outputPath)
-        {
-            File.Copy(docxFiles[0], outputPath, true);
-
-            using WordprocessingDocument mainDoc =
-                WordprocessingDocument.Open(outputPath, true);
-
-            MainDocumentPart mainPart = mainDoc.MainDocumentPart;
-            Body body = mainPart.Document.Body;
-
-            foreach (var file in docxFiles.Skip(1))
-            {
-                // 把待合并 docx 作为部件嵌入主文档
-                AlternativeFormatImportPart chunk =
-                    mainPart.AddAlternativeFormatImportPart(
-                        AlternativeFormatImportPartType.WordprocessingML);
-
-                using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-                {
-                    chunk.FeedData(fs);
-                }
-
-                body.Append(new AltChunk { Id = chunk.Id });
-            }
-
-            mainPart.Document.Save();
-        }
-
-        //public static void splitPage()
-        //{
-        //    body.Append(new Paragraph(
-        //        new Run(new Break() { Type = BreakValues.Page })
-        //    ));
-        //    body.Append(new AltChunk { Id = chunk.Id });
-        //}
     }
 }
