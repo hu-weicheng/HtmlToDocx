@@ -199,5 +199,11 @@ namespace HtmlToDocx_for_SAR_Plots
         {
 
         }
+
+        //合并
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

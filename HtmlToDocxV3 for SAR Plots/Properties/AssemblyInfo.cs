@@ -29,5 +29,7 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-[assembly: AssemblyVersion("2.2.0.0")]
-[assembly: AssemblyFileVersion("2.25.0.0")]
+[assembly: AssemblyVersion("2.3.0.0")]
+[assembly: AssemblyFileVersion("2.3.28.0")]
+// 3. 给用户看的产品版本（可以灵活控制，比如带日期或标识）
+[assembly: AssemblyInformationalVersion("2.3")] 

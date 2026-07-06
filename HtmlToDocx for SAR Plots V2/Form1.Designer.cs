@@ -45,8 +45,8 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,12 +185,13 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(379, 30);
+            this.button6.Location = new System.Drawing.Point(379, 44);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 15;
             this.button6.Text = "合并";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // groupBox1
             // 
@@ -204,6 +205,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "合并成 SAR Plots.docx";
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(9, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(267, 34);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "docx文件命名“1# ” “2# ” “3# ”等，比如“1# GSM 900 Head Left Cheek Mid.docx\"";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -213,14 +222,6 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "请先将docx案件文件编上顺序，再转换。";
             this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(9, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(267, 34);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "docx文件命名“1# ” “2# ” “3# ”等，比如“1# GSM 900 Head Left Cheek Mid.docx\"";
             // 
             // HtmlToDocx
             // 
@@ -244,7 +245,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "HtmlToDocx";
-            this.Text = "HtmlToDocx for SAR Plots V2.2";
+            this.Text = "HtmlToDocx for SAR Plots V3.0";
             this.Load += new System.EventHandler(this.HtmlToDocx_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

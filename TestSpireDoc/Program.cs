@@ -65,8 +65,7 @@ namespace TestSpireDoc
                 Console.WriteLine(file);
             }
 
-            string outputPath = docroot+ @"2601U29087E-SA(LF1013)India SAR Plots.docx";
-            //MergeDocx.MergeDocsByAltChunk(doclist.ToArray(), outputPath);   //报错文件已损坏，只有第一个Docx
+            string outputPath = docroot+ @"2601U29087E-SA(LF1013)India Merge SAR Plots.docx";
             MergeDocx.MergeDocsEmbedded(doclist.ToArray(), outputPath);
         }
 

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("HtmlToDocx for SAR Plots")]
-[assembly: AssemblyDescription("HtmlToDocx for SAR Plots")]
+[assembly: AssemblyTitle("MergeDocxFiles")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ryse")]
-[assembly: AssemblyProduct("HtmlToDocx for SAR Plots")]
-[assembly: AssemblyCopyright("Copyright ©Ryse  2026")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("MergeDocxFiles")]
+[assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,14 +20,14 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("57b84828-d2d1-4d77-8fd3-c074bf3b388c")]
+[assembly: Guid("f4bec35f-3d20-482d-9904-fa0319d6848a")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
-//      主版本     //功能更新次数
-//      次版本     //修改次数
+//      主版本
+//      次版本
 //      生成号
 //      修订号
 //
-[assembly: AssemblyVersion("3.2.0.0")]
-[assembly: AssemblyFileVersion("2.32.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

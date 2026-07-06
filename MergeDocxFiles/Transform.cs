@@ -210,7 +210,57 @@ namespace TestSpireDoc
             return htmPaths;
         }
     }
+    internal class FileTree
+    {
+        public List<string> filePaths = new List<string>();
 
+        public int Count { get { return filePaths.Count; } }
+
+        public static List<string> GetAllHtmFiles(string rootDir)
+        {
+            List<string> htmPaths = new List<string>();
+
+            if (!Directory.Exists(rootDir))
+                return htmPaths;
+
+            // SearchOption.AllDirectories = 包含所有子文件夹
+            foreach (string file in Directory.GetFiles(
+                rootDir,
+                "*.*",
+                SearchOption.AllDirectories))
+            {
+                string ext = Path.GetExtension(file).ToLower();
+                if (ext == ".htm" || ext == ".html")
+                {
+                    htmPaths.Add(file);
+                }
+            }
+
+            return htmPaths;
+        }
+        public static List<string> GetAllDocFiles(string rootDir)
+        {
+            List<string> docPaths = new List<string>();
+
+            if (!Directory.Exists(rootDir))
+                return docPaths;
+
+            // SearchOption.AllDirectories = 包含所有子文件夹
+            foreach (string file in Directory.GetFiles(
+                rootDir,
+                "*.*",
+                SearchOption.AllDirectories))
+            {
+                string ext = Path.GetExtension(file).ToLower();
+                if (ext == ".doc" || ext == ".docx")
+                {
+                    docPaths.Add(file);
+                }
+            }
+
+            return docPaths;
+        }
+    }
     internal class MergeDocx
     {
         public static void MergeDocsEmbedded(string[] docxFiles, string outputPath)
@@ -257,5 +307,10 @@ namespace TestSpireDoc
         //        ));
         //    body.Append(new AltChunk { Id = chunk.Id });
         //}
+    }
+    internal class MergeDocxE:MergeDocx
+    {
+        public string inputCaseDir = string.Empty;
+        public string outputDir = string.Empty;
     }
 }

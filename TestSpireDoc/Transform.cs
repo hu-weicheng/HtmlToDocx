@@ -67,47 +67,6 @@ namespace TestSpireDoc
 
     internal class MergeDocx
     {
-        public static void MergeDocsByAltChunk(string[] docxFiles, string outputPath)
-        {
-            //以第一个文件为基础
-            File.Copy(docxFiles[0], outputPath, true);
-
-            using (WordprocessingDocument mainDoc =
-                WordprocessingDocument.Open(outputPath, true))
-            {
-                MainDocumentPart mainPart = mainDoc.MainDocumentPart;
-                DocumentFormat.OpenXml.Wordprocessing.Body body = mainPart.Document.Body;
-
-                foreach (var file in docxFiles.Skip(1))
-                {
-                    //var rel = mainPart.AddExternalRelationship(
-                    //    AlternativeFormatImportPart.RelationshipType,
-                    //    new Uri(file, UriKind.Absolute)
-                    //);
-                    var chunk = mainPart.AddAlternativeFormatImportPart(
-                        AlternativeFormatImportPartType.WordprocessingML);
-
-                    var rel = mainPart.AddExternalRelationship(
-                        chunk.RelationshipType,
-                        new Uri(file, UriKind.Absolute)
-                    );
-                    //var rel = mainPart.AddExternalRelationship(
-                    //                "http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk",
-                    //                new Uri(file, UriKind.Absolute)
-                    //            );
-
-                    mainPart.AddAlternativeFormatImportPart(
-                        AlternativeFormatImportPartType.WordprocessingML,
-                        rel.Id
-                    );
-
-                    body.Append(new AltChunk { Id = rel.Id });
-                }
-
-                mainPart.Document.Save();
-            }
-        }
-
         public static void MergeDocsEmbedded(string[] docxFiles, string outputPath)
         {
             File.Copy(docxFiles[0], outputPath, true);

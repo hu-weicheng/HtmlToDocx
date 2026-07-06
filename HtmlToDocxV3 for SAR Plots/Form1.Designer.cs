@@ -145,6 +145,7 @@
             this.textBox4.Location = new System.Drawing.Point(12, 288);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox4.Size = new System.Drawing.Size(207, 150);
             this.textBox4.TabIndex = 11;
             // 
@@ -166,7 +167,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "HtmlToDocx";
-            this.Text = "HtmlToDocx for SAR Plots V2.2";
+            this.Text = "HtmlToDocx for SAR Plots V2.3";
             this.Load += new System.EventHandler(this.HtmlToDocx_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
