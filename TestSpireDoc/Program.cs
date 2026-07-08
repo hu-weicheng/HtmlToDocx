@@ -65,7 +65,7 @@ namespace TestSpireDoc
                 Console.WriteLine(file);
             }
 
-            string outputPath = docroot+ @"2601U29087E-SA(LF1013)India Merge SAR Plots.docx";
+            string outputPath = docroot+ @" Merge SAR Plots.docx";
             MergeDocx.MergeDocsEmbedded(doclist.ToArray(), outputPath);
         }
 

@@ -308,6 +308,119 @@ namespace TestSpireDoc
         //    body.Append(new AltChunk { Id = chunk.Id });
         //}
     }
+
+    internal class MergeDocxV2
+    {
+        public WordprocessingDocument mainDoc = null;
+        public string outputFilePath = string.Empty;   //合并后最终文件名称
+        //文件内容处理的主要工具
+        public MainDocumentPart mainPart = null;
+        public DocumentFormat.OpenXml.Wordprocessing.Body body = null;
+
+        public void Initinal(string docxFilePath,string outputFilePath)
+        {
+            // 确保输出目录存在
+            string outputDir = Path.GetDirectoryName(outputFilePath);
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
+            }
+            this.outputFilePath = outputFilePath;
+            if (File.Exists(this.outputFilePath)==false)
+            {
+                File.Delete(this.outputFilePath);
+            }
+            File.Copy(docxFilePath, this.outputFilePath, true);
+            
+            this.mainDoc = WordprocessingDocument.Open(this.outputFilePath, true);
+            //
+            this.mainPart = this.mainDoc.MainDocumentPart;
+            this.body = this.mainPart.Document.Body;
+        }
+        public void ProcessContent(string docxFile)
+        {
+            // 把待合并 docx 作为部件嵌入主文档
+            AlternativeFormatImportPart chunk =
+                this.mainPart.AddAlternativeFormatImportPart(AlternativeFormatImportPartType.WordprocessingML);
+
+            using (var fs = new FileStream(docxFile, FileMode.Open, FileAccess.Read))
+            {
+                chunk.FeedData(fs);
+            }
+
+            //页尾加分割符
+            body.Append(new Paragraph(
+                    new Run(new DocumentFormat.OpenXml.Wordprocessing.Break() { Type = BreakValues.Page })
+                ));
+
+            // ✅ 终极兜底：通过 MainDocumentPart 查 ID
+            string id = mainPart.GetIdOfPart(chunk);
+            body.Append(new AltChunk { Id = id });
+        }
+        public void Save()
+        {
+            this.mainPart.Document.Save();
+            // ✅ 关键：保存整个 WordprocessingDocument，而不是仅 Document
+            this.mainDoc.Save();
+            //你把第一个 DOCX 原地打开并修改
+            //后续 Save()实际是写回原文件
+            //AltChunk 指向的 Parts 被污染
+            //Word 打开后极易损坏，或只剩第一份内容
+        }
+        ~MergeDocxV2()
+        {
+            //if (this.mainDoc != null)
+            //{
+            //    this.mainDoc.Dispose();
+            //}
+            this.mainDoc?.Dispose();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="docxFiles"></param>
+        /// <param name="outputPath">文件名路径</param>
+        public static void MergeDocsEmbedded(string[] docxFiles, string outputPath)
+        {
+            File.Copy(docxFiles[0], outputPath, true);
+
+            using (WordprocessingDocument mainDoc =
+                WordprocessingDocument.Open(outputPath, true))
+            {
+                MainDocumentPart mainPart = mainDoc.MainDocumentPart;
+                DocumentFormat.OpenXml.Wordprocessing.Body body = mainPart.Document.Body;
+
+                foreach (var file in docxFiles.Skip(1))
+                {
+                    // 把待合并 docx 作为部件嵌入主文档
+                    AlternativeFormatImportPart chunk =
+                        mainPart.AddAlternativeFormatImportPart(AlternativeFormatImportPartType.WordprocessingML);
+
+                    using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                    {
+                        chunk.FeedData(fs);
+                    }
+
+                    //页尾加分割符
+                    body.Append(new Paragraph(
+                            new Run(new DocumentFormat.OpenXml.Wordprocessing.Break() { Type = BreakValues.Page })
+                        ));
+
+                    // ✅ 终极兜底：通过 MainDocumentPart 查 ID
+                    string id = mainPart.GetIdOfPart(chunk);
+                    body.Append(new AltChunk { Id = id });
+                }
+
+                mainPart.Document.Save();
+            }
+        }
+    }
+
+    internal class MergeDocxE2:MergeDocxV2
+    {
+        public string inputCaseDir = string.Empty;
+        public string outputDir = string.Empty;
+    }
     internal class MergeDocxE:MergeDocx
     {
         public string inputCaseDir = string.Empty;

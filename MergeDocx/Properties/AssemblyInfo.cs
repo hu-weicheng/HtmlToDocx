@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("MergeDocxFiles")]
+[assembly: AssemblyTitle("MergeDocx")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MergeDocxFiles")]
+[assembly: AssemblyProduct("MergeDocx")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("f4bec35f-3d20-482d-9904-fa0319d6848a")]
+[assembly: Guid("a57e62ad-b7da-49e9-bcea-3c152cebf09e")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -29,7 +29,5 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.12.0.0")]
-// 3. 给用户看的产品版本（可以灵活控制，比如带日期或标识）
-[assembly: AssemblyInformationalVersion("1.3")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

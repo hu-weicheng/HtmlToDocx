@@ -2,6 +2,7 @@
   <Project Path="HtmlToDocx for SAR Plots V2/HtmlToDocxV3 for SAR Plots.csproj" Id="6a4bb67e-31ba-4674-a8bb-0f9e7c191448" />
   <Project Path="HtmlToDocx for SAR Plots/HtmlToDocx for SAR Plots.csproj" Id="57b84828-d2d1-4d77-8fd3-c074bf3b388c" />
   <Project Path="HtmlToDocxV3 for SAR Plots/HtmlToDocx for SAR Plots V2.csproj" Id="9c9878a9-9725-4d68-b39a-eebd7391f419" />
+  <Project Path="MergeDocx/MergeDocx.csproj" Id="a57e62ad-b7da-49e9-bcea-3c152cebf09e" />
   <Project Path="MergeDocxFiles/MergeDocxFiles.csproj" Id="f4bec35f-3d20-482d-9904-fa0319d6848a" />
   <Project Path="TestSpireDoc/TestSpireDoc.csproj" Id="beb34896-1f07-448e-97db-92effa078a82" />
 </Solution>
