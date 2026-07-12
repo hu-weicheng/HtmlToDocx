@@ -221,7 +221,7 @@
             this.label5.Size = new System.Drawing.Size(221, 12);
             this.label5.TabIndex = 16;
             this.label5.Text = "请先将docx案件文件编上顺序，再转换。";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+
             // 
             // HtmlToDocx
             // 

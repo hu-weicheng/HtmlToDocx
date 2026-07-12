@@ -189,10 +189,6 @@ namespace HtmlToDocx_for_SAR_Plots
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         //输入多个案件目录
         private void button5_Click(object sender, EventArgs e)
