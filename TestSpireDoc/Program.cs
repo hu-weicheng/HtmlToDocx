@@ -9,6 +9,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
 using TestSpireDoc;
 //using Spire.License;
 //using Spire.Doc.Documents;
@@ -21,6 +23,7 @@ namespace TestSpireDoc
 {
     internal class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             //Document doc = new Document();
@@ -48,9 +51,43 @@ namespace TestSpireDoc
             //    Console.WriteLine(Dir);
             //}    
 
+            //输入docx文件目录，输出顺序
+            string docxDir = "";
+            using (var dlg = new FolderBrowserDialog())
+            {
+                dlg.Description = "请选择输出目录";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    docxDir = dlg.SelectedPath;
+                }
+            }
+            //扫描所有文件
+            List<string> doclist = new List<string>();
+            foreach (var file in Directory.EnumerateFiles(
+                docxDir, "*.*", SearchOption.AllDirectories))
+            {
+                string ext = Path.GetExtension(file).ToLower();
+                if (ext == ".doc" || ext == ".docx")
+                {
+                    doclist.Add(file);
+                }
+            }
+            //排序
+            var sorted = SarFileSorter.DocxAsortV7(doclist.ToArray());
+            //展示循序
+            foreach (var item in sorted)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+
+        public static void TestMergeFiles()
+        {
             string docroot = @"C:\Users\Raise\Desktop\TestSpire\2601U29087E-SA(LF1013)India";
             //搜集docx文件
-            List<string> doclist= new List<string>();
+            List<string> doclist = new List<string>();
             foreach (var file in Directory.EnumerateFiles(
                 docroot, "*.*", SearchOption.AllDirectories))
             {
@@ -65,10 +102,9 @@ namespace TestSpireDoc
                 Console.WriteLine(file);
             }
 
-            string outputPath = docroot+ @" Merge SAR Plots.docx";
+            string outputPath = docroot + @" Merge SAR Plots.docx";
             MergeDocx.MergeDocsEmbedded(doclist.ToArray(), outputPath);
         }
-
         public static List<string> GetAllHtmFiles(string rootDir)
         {
             List<string> htmPaths = new List<string>();
